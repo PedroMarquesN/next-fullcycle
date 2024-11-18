@@ -4,7 +4,7 @@ import { InformationCircleIcon, PlayIcon } from '@heroicons/react/16/solid';
 
 export default function Home() {
   return (
-    <div className='relative bg-gradient-to-b lg:h-[140vh] overflow-hidden'>
+    <div className='relative overflow-hidden bg-gradient-to-b lg:h-[140vh]'>
       <Header />
       <main className='relative h-screen pb-24 pl-4 lg:pl-16'>
         <div className='flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12'>
@@ -33,6 +33,28 @@ export default function Home() {
             <InformationCircleIcon className='h-5 w-5' />
             More Info
           </button>
+        </div>
+        <div className='flex-col space-y-4'>
+          <div className='flex'>
+            <h2 className='-ml-2 inline-flex items-center text-2xl font-bold'>
+              Featured
+            </h2>
+          </div>
+          <div className='scrollbar-hide -ml-8 flex space-x-4 overflow-x-scroll p-6'>
+            {[1, 2, 3, 4, 5, 2, 2, 2, 2].map((item, index) => (
+              <div
+                key={index}
+                className='group cursor-grabbing relative h-28 min-w-[200px] transform transition duration-200 ease-in hover:z-50 hover:scale-105 md:h-40 md:min-w-[300px] lg:h-52 lg:min-w-[300px]'
+              >
+                <Image
+                  src={`/item_${item}.png`}
+                  alt='MAID'
+                  layout='fill'
+                  className='rounded-md'
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
