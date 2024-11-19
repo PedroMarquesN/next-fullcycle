@@ -10,17 +10,17 @@ type MovieCardProps = {
 
 const MovieCard = ({ index }: MovieCardProps) => (
   <div
-  key={index}
-  className='group relative h-28 min-w-[200px] transform cursor-grabbing transition duration-200 ease-in hover:z-50 hover:scale-105 md:h-40 md:min-w-[300px] lg:h-52 lg:min-w-[300px]'
->
-  <Image
-    src={`/item_${index}.png`}
-    alt='MAID'
-    layout='fill'
-    className='rounded-md'
-  />
-</div>
-)
+    key={index}
+    className='group relative h-28 min-w-[200px] transform cursor-grabbing transition duration-200 ease-in hover:z-50 hover:scale-105 md:h-40 md:min-w-[300px] lg:h-52 lg:min-w-[300px]'
+  >
+    <Image
+      src={`/item_${index}.png`}
+      alt='MAID'
+      layout='fill'
+      className='rounded-md'
+    />
+  </div>
+);
 
 export function MovieRow({ sectionTitle }: MovieRowProps) {
   return (
