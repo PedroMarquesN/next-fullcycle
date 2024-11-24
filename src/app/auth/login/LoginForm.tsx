@@ -1,15 +1,46 @@
 'use client';
 import { AuthForm } from "@/app/components/AuthForm";
+import { useRouter } from "next/navigation";
+
+import { FormEvent, useState } from "react";
 
 export default function LoginForm() {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Form submitted');
+        const formData = new FormData(e.currentTarget);
+        const email = formData.get('email') as string;
+        const password = formData.get('password') as string;
+        try{
+          const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+          });
+
+          if (response.ok) {
+            console.log('User logged in');
+            router.push('/');
+            return;
+          }
+          const payload = await response.json();
+          setError(payload.map((error: { message: string }) => error.message));
         }
+        catch (error) {
+            console.error(error);
+            setError('Erro ao fazer login !');
+        }
+      }
     
 
     return (
-      <AuthForm formType='login' onSubmit={handleSubmit} />
+      <>
+        {error && <div className="error-message">{error}</div>}
+        <AuthForm formType='login' onSubmit={handleSubmit} />
+      </>
     )
 
   }
