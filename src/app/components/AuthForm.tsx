@@ -18,8 +18,7 @@ export const AuthForm: FC<AuthFormProps> = ({ formType, onSubmit }) => {
           {formType === 'login' ? 'Login' : 'Register'}
         </h1>
         <p className='text-sm text-gray-400'>
-          {formType === 'login' ? 'Novo por aqui?' : 'Já tem uma conta?'}
-          {' '}
+          {formType === 'login' ? 'Novo por aqui?' : 'Já tem uma conta?'}{' '}
           <Link
             href={formType === 'login' ? '/auth/register' : '/auth/login'}
             className='text-blue-500 hover:underline'
@@ -56,11 +55,10 @@ export const AuthForm: FC<AuthFormProps> = ({ formType, onSubmit }) => {
       <div className='flex flex-col-reverse space-y-2 pt-2 sm:flex-row sm:space-x-2 sm:space-y-0'>
         <button
           type='submit'
-          className='w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          className='w-full rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500'
         >
           {formType === 'login' ? 'Login' : 'Registrar'}
         </button>
-
       </div>
     </form>
   );
