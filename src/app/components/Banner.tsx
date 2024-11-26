@@ -32,12 +32,12 @@ export function Banner({ movie }: { movie: Movie }) {
         </p>
       </div>
       <div className='flex space-x-3'>
-      <Link href={`/watch/${movie.id}`}>
-        <button className='flex cursor-pointer items-center gap-x-2 rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
-          <PlayIcon className='h-5 w-5' />
-          Play
-        </button>
-      </Link>
+        <Link href={`/watch/${movie.id}`}>
+          <button className='flex cursor-pointer items-center gap-x-2 rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
+            <PlayIcon className='h-5 w-5' />
+            Play
+          </button>
+        </Link>
         <button className='flex cursor-pointer items-center gap-x-2 rounded bg-gray-500 px-5 py-1.5 text-sm font-semibold text-white transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
           <InformationCircleIcon className='h-5 w-5' />
           More Info
