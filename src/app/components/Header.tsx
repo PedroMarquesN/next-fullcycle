@@ -8,7 +8,7 @@ import { SearchForm } from './SearchForm';
 import { useRouter,} from 'next/navigation';
 import Link from 'next/link';
 
-
+//finalmente PRontooooOooO
 
 export default function Header() {
   const isScrolled = useScroll();
