@@ -1,5 +1,7 @@
 'use client';
-import { AuthForm } from '@/app/components/AuthForm';
+
+import { AuthForm } from "../../components/AuthForm";
+
 
 export default function RegisterForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

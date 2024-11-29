@@ -1,29 +1,37 @@
-import Header from "@/app/components/Header";
-import Player from "@/app/components/Player";
-import { getMovieById } from "@/app/service/MovieService";
+
+import Header from "../../components/Header";
+import Player from "../../components/Player";
+import { getMovieById } from "../../service/MovieService";
+import { Movie } from "../../types/movie";
 
 interface IWatchProps {
-    params: {
-        id: string;
-    }
+  params: Promise<{
+    id: string;
+  }>;
 }
 
 export default async function Watch({ params }: IWatchProps) {
-    const movie = await getMovieById(params.id);
+  const { id } = await params; 
 
-    if (!movie) {
-        <div className='flex flex-col items-center justify-center h-screen bg-gradient-to-b from-gray-800 to-black text-white'>
+  const movie: Movie | null = await getMovieById(id);
+
+  if (!movie) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-gray-800 to-black text-white">
         <Header />
-        <main className='flex flex-col items-center justify-center'>
-          <h1 className='mb-4 text-2xl font-bold'>
-           Desculpe , mas esse filme não está disponível no momento.
+        <main className="flex flex-col items-center justify-center">
+          <h1 className="mb-4 text-2xl font-bold">
+            Desculpe, mas esse filme não está disponível no momento.
           </h1>
-
         </main>
       </div>
-    }
-    return (
-        <Player movie={movie} />
+    );
+  }
 
-    )
+  return (
+    <div className="h-screen">
+      <Header />
+      <Player movie={movie} />
+    </div>
+  );
 }
